@@ -1,0 +1,57 @@
+'''
+Now write a program that calculates the minimum fixed monthly payment needed in order pay off a credit card balance within 12 months. By a fixed monthly payment, we mean a single number which does not change each month, but instead is a constant amount that will be paid each month.
+
+In this problem, we will not be dealing with a minimum monthly payment rate.
+
+The following variables contain values as described below:
+
+balance - the outstanding balance on the credit card
+
+annualInterestRate - annual interest rate as a decimal
+
+The program should print out one line: the lowest monthly payment that will pay off all debt in under 1 year, for example:
+
+Lowest Payment: 180 
+Assume that the interest is compounded monthly according to the balance at the end of the month (after the payment for that month is made). The monthly payment must be a multiple of $10 and is the same for all months. Notice that it is possible for the balance to become negative using this payment scheme, which is okay. A summary of the required math is found below:
+
+Monthly interest rate = (Annual interest rate) / 12.0
+Monthly unpaid balance = (Previous balance) - (Minimum fixed monthly payment)
+Updated balance each month = (Monthly unpaid balance) + (Monthly interest rate x Monthly unpaid balance)
+'''
+# Paste your code into this box
+
+#test data below
+balance = 3329
+annualInterestRate = 0.2
+
+'''
+balance = 3329; annualInterestRate = 0.2 #Lowest Payment: 310
+balance = 4773; annualInterestRate = 0.2 #Lowest Payment: 440
+balance = 3926; annualInterestRate = 0.2 #Lowest Payment: 360
+balance = 322; annualInterestRate = 0.18 #Lowest Payment: 30
+balance = 292; annualInterestRate = 0.18 #Lowest Payment: 30
+balance = 607; annualInterestRate = 0.2 #Lowest Payment: 60
+balance = 929; annualInterestRate = 0.18 #Lowest Payment: 90
+balance = 3677; annualInterestRate = 0.2 #Lowest Payment: 340
+balance = 4011; annualInterestRate = 0.04 #Lowest Payment: 350
+balance = 4633; annualInterestRate = 0.18 #Lowest Payment: 420
+balance = 4399; annualInterestRate = 0.18 #Lowest Payment: 400
+balance = 4096; annualInterestRate = 0.2 #Lowest Payment: 380
+balance = 4935; annualInterestRate = 0.2 #Lowest Payment: 450
+balance = 3825; annualInterestRate = 0.2 #Lowest Payment: 350
+balance = 4025; annualInterestRate = 0.18 #Lowest Payment: 370
+
+#I have tried to use math.ceil and Decimal but failed to achieve the expected results.
+
+'''
+
+#test data above
+
+import math
+p = 0
+b = balance
+r = annualInterestRate
+mr = r/12
+
+p = int(math.ceil((b/((1/mr) - 1/(mr*((1+mr)**12))))/10)*10)
+print('Lowest Payment: %s' %p)

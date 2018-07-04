@@ -1,0 +1,16 @@
+p = 0
+b = balance
+r = annualInterestRate
+n = 0
+mr = r/12
+
+while b > 0:
+    p += 10
+    b = balance
+    n = 0
+    while n < 12:
+        b = b - p
+        b = b * (1+mr)
+        n += 1
+    
+print('Lowest Payment: ', p)
